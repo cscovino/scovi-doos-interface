@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+
+import MainLayout from './layouts/Main';
+import Home from './views/Home';
+import ScoviDoos from './views/ScoviDoos';
+import ScoviDoo from './views/ScoviDoo';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="scovi-doos">
+          <Route index element={<ScoviDoos />} />
+          <Route path=":tokenId" element={<ScoviDoo />} />
+        </Route>
+      </Routes>
+    </MainLayout>
   );
 }
 
